@@ -56,12 +56,13 @@ class VideoController extends GetxController {
   // }
 }
 
-class DownloadedVideosController extends GetxController {
-  var downloadedVideos = <File>[].obs;
 
-  Future<void> fetchDownloadedVideos() async {
-    final dir = await getApplicationDocumentsDirectory();
-    final files = dir.listSync().whereType<File>().toList();
-    downloadedVideos.assignAll(files);
-  }
-}
+// class DownloadedVideosController extends GetxController {
+//   var downloadedVideos = <File>[].obs;
+
+//   Future<void> fetchDownloadedVideos() async {
+//     final dir = await getApplicationDocumentsDirectory();
+//     final files = dir.listSync().whereType<File>().toList();
+//     downloadedVideos.assignAll(files);
+//   }
+// }

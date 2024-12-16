@@ -340,22 +340,22 @@ class DownloadScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: 20,
         itemBuilder: (context, index) {
-          final videoFile = controller.downloadedVideos[index];
+          // final videoFile = controller.downloadedVideos[index];
 
           return ListTile(
             title: Text('Video ${index + 1}'),
             onTap: () {
               // Navigate to PlayerPage with selected video
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PlayerPage(
-                    isOnline: false,
-                    // videoUrl: downloadedVideos[index],
-                    downloadedVideos: videoFile.path,
-                  ),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => PlayerPage(
+              //       isOnline: false,
+              //       // videoUrl: downloadedVideos[index],
+              //       downloadedVideos: videoFile.path,
+              //     ),
+              //   ),
+              // );
             },
           );
         },
