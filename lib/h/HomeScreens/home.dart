@@ -46,8 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
             physics: const NeverScrollableScrollPhysics(),
             children: [
               FeaturedScreen(),
-              // SearchScreen(),
-              DownloadedVideosScreen(),
+              SearchScreen(),
+              // DownloadedVideosScreen(),
               // ExploreTopicssScreen(),
               // CourseListScreen(
               //   courseId: 1,courseName: ,

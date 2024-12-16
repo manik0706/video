@@ -11,7 +11,7 @@ import 'package:path_provider/path_provider.dart';
 
 class CoursesController extends GetxController {
   var isLoading = true.obs;
-  var courseDetails = CourseModel().obs;
+  var courseDetails = ClinicData().obs;
   VideoPlayerController? mainVideoController;
   var videoControllers = <String, VideoPlayerController>{}.obs;
   var currentVideoUrl = ''.obs; // Add this line
@@ -30,9 +30,10 @@ class CoursesController extends GetxController {
         courseDetails.value = details;
 
         // Initialize the main video controller with a processed URL
-        if (details.videoSource != null && details.videoSource!.isNotEmpty) {
+        if (details.body?.videoSource != null &&
+            details.body!.videoSource!.isNotEmpty) {
           mainVideoController = VideoPlayerController.network(
-              processVideoUrl(details.videoSource!));
+              processVideoUrl(details.body!.videoSource!));
         }
 
         _initializeVideoControllers();
@@ -100,6 +101,8 @@ class CoursesController extends GetxController {
         downloads = downloads.cast<String>(); // Ensure type consistency
         downloads.add(filePath);
         storage.write('downloads', downloads);
+        storage.write('downloadedVideoPath', filePath);
+        print(filePath);
 
         return filePath;
       }
@@ -111,7 +114,7 @@ class CoursesController extends GetxController {
 
   void _initializeVideoControllers() {
     // Initialize video controllers for each lesson with a video source
-    for (var module in courseDetails.value.courseContents ?? []) {
+    for (var module in courseDetails.value.body?.courseContents ?? []) {
       for (var lesson in module.lessons ?? []) {
         if (lesson.videoSource != null && lesson.videoSource!.isNotEmpty) {
           videoControllers[lesson.lessonTitle ?? ""] =
